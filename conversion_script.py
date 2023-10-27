@@ -56,8 +56,8 @@ def process_textbook(file_path: str, chunk_size: int, overlap: int) -> pd.DataFr
         print(chapter_number_words.keys())
 
     chunks = create_overlapping_chunks(sentences, chunk_size, overlap)
-    print(f"Number of chunks: {len(chunks)}")  # Print the number of chunks
-    print(f"First 5 chunks: {chunks[:5]}")  # Print the first 5 chunks
+    print(f"Number of chunks: {len(chunks)}")  
+    print(f"First 5 chunks: {chunks[:5]}")  
 
     rows = []
     for start, end, chunk_text in chunks:
@@ -67,11 +67,9 @@ def process_textbook(file_path: str, chunk_size: int, overlap: int) -> pd.DataFr
             'Text': chunk_text
         })
     df = pd.DataFrame(rows)
-    print(f"DataFrame head: {df.head()}")  # Print the first 5 rows of the DataFrame
+    print(f"DataFrame head: {df.head()}")  
 
     return df
 
-
-# Usage
 df = process_textbook('/Users/rohittiwari/Downloads/ncert_class12_maths_combined.pdf', chunk_size=4, overlap=1)
 df.to_csv('processed_ncert_class12_maths.csv', index=False)
